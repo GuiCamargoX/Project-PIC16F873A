@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      PIC Control
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="myview" padding>
+  
+  <ion-img style="width: 100%; height: 25%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Skeleton-Key-Silhouette.svg/2000px-Skeleton-Key-Silhouette.svg.png"></ion-img>
+
+  <ion-grid>
+      <ion-row>
+        <ion-col><br><br></ion-col>
+      </ion-row>
+    
+    <ion-row>
+      <ion-col col-8 offset-2>
+        
+        <button ion-button color="secondary" round large icon-left block (click)="showFingerprintDialog()">
+          <ion-icon name="unlock"></ion-icon>
+          Unlock
+        </button>
+        <br><br><br><br>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-8  offset-2>
+
+        <button ion-button color="secondary"  large icon-left block (click)="setParty()">
+          <ion-icon name="flash"></ion-icon>
+          Party
+        </button>
+
+      </ion-col>
+    </ion-row>
+
+  
+
+  </ion-grid>
+</ion-content>
+
+
+<ion-footer>   
+  <button ion-button color="secondary" full large icon-left (click)="connectModule()" >
+    <ion-icon name="bluetooth"></ion-icon>
+    Connect Bluetooth
+  </button>
+</ion-footer>
