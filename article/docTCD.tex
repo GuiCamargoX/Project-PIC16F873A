@@ -1,0 +1,361 @@
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	12pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no recto. Oposto a twoside
+	a4paper,            % tamanho do papel. 
+	twocolumn,
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+		
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Destravando uma Trava Elétrica Utilizando Impressão Digital do Smartphone via PIC16F873A  }
+\autor{Guilherme Camargo de Oliveira \thanks{gui551@hotmail.com}\\
+      }
+\local{Brasil}
+\data{\today}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Modelo de artigo científico},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.2cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+ \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+\maketitle
+
+% resumo em português
+\begin{resumoumacoluna}
+Este projeto foi desenvolvido como Trabalho de Conclusão de Disciplina (TCD) para a matéria de Microcontroladores da Universidade Estadual Paulista (UNESP) - Bauru, em 2018. Consiste de um aplicativo Ionic que se comunica com um módulo Bluetooth HC-06 para controlar uma trava elétrica de 12v e alternar um Led RGB entre as cores vermelho, verde e azul.
+ 
+ \vspace{\onelineskip}
+ 
+ \noindent
+ \textbf{Palavras-chave}: PIC16F873A. \emph{Internet Of Things}. TCD.
+ 
+ \vspace{\onelineskip}
+ 
+\end{resumoumacoluna}
+
+ ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\section*{Introdução}
+\addcontentsline{toc}{section}{Introdução}
+Vivemos em uma época onde a Internet das Coisas esta presente, muitos querem automatizar sua casa. Quando falamos de revolução tecnológica, a noção da Internet das Coisas, \emph{Internet of Things - IoT}, é um dos assuntos principais.  E não é difícil entender o porquê. Suas possibilidades são inúmeras, como transformar nossa relação com a tecnologia, mudar o modo como interagimos com o mundo e até mais, o modo como o mundo interage conosco.
+
+Internet das Coisas esta relacionado com o modo como as coisas estão conectadas e se comunicam entre si e com o usuário, através de sensores inteligentes e softwares que transmitem dados para uma rede. Como se fosse um grande sistema nervoso que possibilita a troca de informações entre dois ou mais pontos.
+
+Ela possibilita inúmeras oportunidades e conexões, muitas das quais não conseguimos imaginar nem entender completamente seu impacto nos dias de hoje.
+
+Não é difícil de perceber por que esse assusto tem sido tão comentado atualmente, ele certamente abre portas para muitas oportunidades, mas também alguns desafios.
+
+Nesse processo , a ideia do projeto lida com as travas elétricas , onde podemos utilizar nossos dispositivos como chave. Atualmente, encontramos muito dispositivos no mercado para abrir travas, necessitando gastar dinheiro para compra-los. A proposta desse projeto é utilizar os recursos de segurança do smartphone como a impressão digital para acionar uma trava, e portanto diminuindo nossos gastos e aumentando a segurança.
+
+A questão de segurança dos celulares evoluiu bastante, dispositivos como impressão digital, leitura facial e leitura das íris, nos permite ter cartões de crédito digitais e ter controle de acessos restritos.
+
+
+% ----------------------------------------------------------
+% Seção de explicações
+% ----------------------------------------------------------
+\section{Recursos}
+
+\subsection{Material Utilizado}
+Para o circuito, vamos utilizar o seguinte material:
+
+\begin{itemize}
+    \item 1x Mini trava elétrica Solenoide 12V
+    \item 1x Módulo Relé 5V 1 Canal
+    \item 1x Fonte de 12V dc
+    \item 1x Resistor 5.1Kohm
+    \item 1x Capacitor 22pF
+    \item 1x Fonte de 5v para o pic
+    \item 1x PIC16f873A
+    \item 1x Módulo Bluetooth HC-06
+    \item 1x Smarthphone com Android
+    \item Framework IONIC
+\end{itemize}
+
+\subsection{Trava Elétrica Solenóide}
+Como o PIC trabalha em seus pinos apenas com 5V e uma corrente relativamente baixa (20mA) para acionamento de dispositivos, um relé pode ser usado para acionar dispositivos que requerem mais de 5V e correntes maiores como é o caso da trava elétrica solenoide. A trava elétrica solenóide precisa de 12V e 600mA para funcionar corretamente. A imagem da \autoref{fig:rele-trava} nos mostra o relé e a trava elétrica utilizada.
+
+A trava elétrica solenoide funciona aplicando uma tensão de 12V em seus terminais. Então o pino da trava é recolhido, mantendo-se na posição enquanto a tensão estiver sendo aplicada. Quando não há tensão, o pino volta ao seu estado normal. A trava foi testada também com uma fonte de 9V e notou-se apenas que a força de recolhimento foi reduzida, mas não impediu o funcionamento.
+
+\begin{figure}
+    \centering
+    \begin{center}
+        \includegraphics[scale=0.05]{img/Rele-Trava.jpg}
+    \end{center}
+    
+    \caption{Relé e Trava Elétrica}
+    \legend{Acima podemos ver o Relé que esta identificado pela cor azul do lado esquerdo da figura. A Trava econtra-se ao lado direito da figura representado pela cor cinza}
+    \label{fig:rele-trava}
+\end{figure}
+
+
+\subsection{Framework IONIC}
+
+O Ionic é um framework open source para desenvolvimento de aplicativos móveis multiplataforma. Para isso, possibilita a implementação do app utilizando tecnologias comumente empregadas na construção do Front-end de soluções web: HTML, CSS e JavaScript. No entanto, como diferencial em relação ao frameworkque adota como base, o Apache Cordova, traz recursos que simplificam ainda mais o desenvolvimento e dão ao app um aspecto mais profissional.
+
+Esses diferenciais estão relacionados ao conjunto de componentes visuais que podemos utilizar para construção do front-end da solução, assim como ao fato do Ionic trazer consigo outra linguagem e framework para prover uma solução de mais alto nível em termos de código e, consequentemente, projeto. Estamos falando do TypeScript e do Angular.
+
+Assim, temos a inovação do Cordova, Orientação a Objetos em JavaScript, bem como as propostas que o Angular implementa em um só framework para construir apps mobile híbridas. Tudo isso faz do Ionic a principal opção quando o objetivo é criar apps mobile multiplataforma.
+
+
+\section{Funcionamento do Aplicativo Mobile}
+
+Para esse projeto foi utilizado o protocolo USART com conexão bluetooth. Na ~\autoref{USART} encontramos mais informações sobre este protocolo. 
+
+O aplicativo consiste em três funções: 
+\begin{enumerate}
+    \item Unlock
+    \item Party
+    \item Connect Bluetooth
+\end{enumerate}
+
+\subsection{Unlock}
+    Tem como funcionalidade liberar a trava por aproximadamente 10 segundos. O led
+RGB muda para a cor verde indicando que foi destravado.
+
+Internamente, o aplicativo envia o byte 0x01 por bluetooth. A responsabilidade do PIC é tratar o byte recebido e chamar a subrotina opcao1 que corresponde ao byte enviado por esse botão.
+
+\subsection{Party}
+Ao clicar nesse botão, o Led RGB conectado ao circuito ira começar a piscar, alternando entre as cores: vermelha, azul, verde. E aparecera uma janela, caso queira que o Led pare de piscar.
+
+Basicamente, a aplicação envia o byte 0x02 por bluetooth ao PIC que chama a subrotina opcao2 para iniciar o processo de piscar.
+
+Quando o botão cancelar é ativado, a aplicação envia o byte 0x03 por bluetooth ao PIC que chama a subrotina opcao3 para parar de piscar o Led.
+    
+\subsection{Connect Bluetooth}
+Parte mais importante, deve ser utilizada primeiro. Sua função é parear o bluetooth do smatphone com o módulo conectado ao PIC.
+
+Se o emparelhamento foi um sucesso então o smartphone ira mostrar uma mensagem \emph{OK!}. Além dessa mensagem, o led do Módulo Bluetooth ira parar de piscar indicando sucesso tambem.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.1]{img/Control.jpg}
+    \caption{Tela Aplicativo Mobile}
+    \legend{Screenshot real do aplicativo desenvolvido.}
+    \label{fig:appMobile}
+\end{figure}
+
+\section{Discussões}
+
+\subsection{Base digital de Biometria}
+O aplicativo utiliza a biblioteca Fingerprint AIO do IONIC. 
+
+Ela simplesmente utiliza as impressões digitais que o smartphone possui registradas. A API solicita ao Android , se a impressão digital lida no momento esta registrada. Caso esteja correta , ela retorna um \emph{callback} a aplicação.
+
+Ou seja, caso queira adicionar mais impressões digitais, basta ir em configurações , segurança e add nova impressão digital, dentro do SO (Android/IOS) do smartphone.
+
+\subsection{Clock}
+Consideração importante , pois o PIC não tem clock interno. Portanto houve a necessidade de colocar um circuito RC ( Resistor - Capacitor ) em série para gerar o clock. Podemos utilizar de cristais como mostra o datasheet, porém não havia disponivel no momento.
+
+Utilizando a fórmula que se encontra no datasheet, obtemos uma Frequência de oscilação de 3.8707MHz. Lembrando que usamos um resistor de 5.1k com um capacitor de 22pF.
+
+\subsection{USART}
+\label{USART}
+Para a comunicação entre o aplicativo e o PIC, utilizamos o protocolo USART que se refere a Universal Synchronous Asynchronous Receiver Transmitter, significando Transmissor/Receptor Universal Síncrono e Assíncrono. 
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.05]{img/ciruito1.jpg}
+    \caption{Foto do circuito pronto}
+    \label{fig:circuito1}
+\end{figure}
+
+É um formato padrão para comunicação de dados de forma serial. Em forma assíncrona, dois fios são usados para transmitir dados, um em cada direção, em regime full-duplex, ou seja, totalmente bi-direcional. Para isso, cada dispositivo deve ter seu clock, e as velocidades devem ser iguais. Em forma síncrona, uma ponta é mestre e a outra escravo. Um fio é utilizado para dados, em regime half-duplex, ou seja, nos dois sentidos, mas um sentido de cada vez. O outro fio é usado para pulsos de clock emitidos pelo dispositivo mestre.
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.05]{img/circuito2.jpg}
+    \caption{Foto do circuito pronto em outro angulo}
+    \label{fig:circuito2}
+\end{figure}
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+\section*{Considerações finais}
+\addcontentsline{toc}{section}{Considerações finais}
+
+Podemos ver que a ideia do projeto é interessante pois poderemos aplicar na gaveta da estante, porta do armário ou em qualquer compartimento onde queiramos fazer o controle de acesso usando uma trava elétrica e um smartphone. Sem necessitar comprar dispositivos de leitor impressão digital, pois o smartphone ja traz consigo.
+
+O código desse projeto encontra-se em \url{https://github.com/GuiCamargoX/Project-PIC16F873A.git}. Podemos observar imagens do circuito pronto nas \autoref{fig:circuito1} e \autoref{fig:circuito2}.
+
+O objetivo da Disciplina foi alcançado. Utilizamos de Assembly para programar o PIC, tive que configurar os bits da conexão USART. Formas como fazer comandos de alto nível como loops, if e switch case foram necessarias transformar em comandos assembly.
+Aprender a mexer no Oscilador RC externo para conseguir um clock estavel. Integrar Bluetooth no app mobile utilizando IONIC e
+aprender a framework IONIC propriamente.
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Há diversas soluções prontas para glossário em LaTeX. 
+% Consulte o manual do abnTeX2 para obter sugestões.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+
+\end{document}
